@@ -7,6 +7,9 @@ require("./src/database/db");
 // importa as rotas de pessoas
 const pessoasRoutes = require("./src/routes/pessoas");
 
+// importa swagger
+const swaggerDocs = require("./src/swagger");
+
 app.use(express.json());
 
 // rota de verificação
@@ -21,6 +24,11 @@ app.get("/health", (req, res) => {
 // usa as rotas de pessoas
 app.use("/api/pessoas", pessoasRoutes);
 
-app.listen(3000, () => {
-    console.log("Servidor rodando na porta 3000");
+// ativa swagger
+swaggerDocs(app);
+
+// porta dinâmica para Render
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
