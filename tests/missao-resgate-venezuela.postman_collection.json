@@ -1,0 +1,126 @@
+{
+  "info": {
+    "name": "Missão Resgate Venezuela API",
+    "description": "Coleção de testes da API acadêmica Missão Resgate Venezuela (Programação Web II - UNIESBAM).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://missao-resgate-api.onrender.com",
+      "type": "string"
+    },
+    {
+      "key": "pessoa_id",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pessoas",
+      "item": [
+        {
+          "name": "Criar pessoa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Maria da Silva\",\n  \"idade\": 34,\n  \"sexo\": \"feminino\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/pessoas",
+              "host": ["{{base_url}}"],
+              "path": ["api", "pessoas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar pessoas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/pessoas?page=1&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "pessoas"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar pessoa por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/pessoas/{{pessoa_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "pessoas", "{{pessoa_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar pessoa",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Maria da Silva Santos\",\n  \"idade\": 35,\n  \"sexo\": \"feminino\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/pessoas/{{pessoa_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "pessoas", "{{pessoa_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remover pessoa",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/pessoas/{{pessoa_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "pessoas", "{{pessoa_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
