@@ -1,19 +1,13 @@
 {
   "name": "missao-resgate-api",
   "version": "1.0.0",
-  "description": "API acadêmica Missão Resgate Venezuela",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "keywords": [],
-  "author": "Rafael Levy Barroso Cavalcante",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "express": "^5.2.1",
-    "sqlite3": "^6.0.1",
     "swagger-jsdoc": "^6.3.0",
     "swagger-ui-express": "^5.0.1"
   },
